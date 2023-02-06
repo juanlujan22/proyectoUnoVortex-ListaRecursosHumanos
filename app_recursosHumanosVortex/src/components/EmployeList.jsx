@@ -6,7 +6,7 @@ const EmployeList = () => {
   return (
     <div> 
         {employes.map( (empleado) => {
-           return <div> 
+           return <div key={empleado.employe_id}> 
                     <h2>{empleado.first_name}</h2>
                     <h3>{empleado.last_name}</h3>
                     <p> {empleado.email} </p>
