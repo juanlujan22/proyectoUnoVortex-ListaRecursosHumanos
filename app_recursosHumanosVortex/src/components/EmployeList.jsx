@@ -1,5 +1,7 @@
 import { useSelector } from "react-redux";
 import { Card, CardHeader, Heading, CardBody, Text, CardFooter, Button, SimpleGrid } from '@chakra-ui/react'
+import {  Link } from "react-router-dom";
+
 const EmployeList = () => {
   const employes = useSelector((state) => state.employes);
   console.log(employes);
@@ -23,7 +25,9 @@ const EmployeList = () => {
                   <Text>{empleado.commission_pct}</Text>
                 </CardBody>
                 <CardFooter justifyContent="center">
+                <Link to="/empleado/:id">
                   <Button>View here</Button>
+                </Link>
                   <Button>Edit</Button>
                 </CardFooter>
               </Card>
