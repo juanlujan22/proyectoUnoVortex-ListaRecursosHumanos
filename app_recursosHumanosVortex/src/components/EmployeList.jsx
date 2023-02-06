@@ -1,21 +1,35 @@
-import { useSelector } from 'react-redux'
-
+import { useSelector } from "react-redux";
+import { Card, CardHeader, Heading, CardBody, Text, CardFooter, Button, SimpleGrid } from '@chakra-ui/react'
 const EmployeList = () => {
-    const employes = useSelector(state => state.employes)
-    console.log(employes)
+  const employes = useSelector((state) => state.employes);
+  console.log(employes);
   return (
-    <div> 
-        {employes.map( (empleado) => {
-           return <div key={empleado.employe_id}> 
-                    <h2>{empleado.first_name}</h2>
-                    <h3>{empleado.last_name}</h3>
-                    <p> {empleado.email} </p>
-                    <p> {empleado.phone_number} </p>
-                    <p> {empleado.hire_date} </p>
-                    <p> {empleado.commission_pct} </p>
-                 </div>
-        })}
-    </div>
-  )
-}
-export default EmployeList
+    <SimpleGrid
+    spacing={6}
+    templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
+    >
+      {employes.map((empleado) => {
+        return (
+              <Card key={empleado.employe_id}>
+                <CardHeader>
+                  <Heading size="md">
+                   Empleado: {empleado.first_name}, {empleado.last_name}
+                  </Heading>
+                </CardHeader>
+                <CardBody>
+                  <Text>{empleado.email} </Text>
+                  <Text>{empleado.phone_number} </Text>
+                  <Text>{empleado.hire_date}</Text>
+                  <Text>{empleado.commission_pct}</Text>
+                </CardBody>
+                <CardFooter justifyContent="center">
+                  <Button>View here</Button>
+                  <Button>Edit</Button>
+                </CardFooter>
+              </Card>
+        );
+      })}
+    </SimpleGrid>
+  );
+};
+export default EmployeList;
