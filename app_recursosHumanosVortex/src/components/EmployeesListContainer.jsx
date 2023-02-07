@@ -4,7 +4,7 @@ import { SimpleGrid } from "@chakra-ui/react";
 
 const EmployeesListContainer = () => {
   const employees = useSelector((state) => state.employes);
-
+  
   return (
     <SimpleGrid
       spacing={6}

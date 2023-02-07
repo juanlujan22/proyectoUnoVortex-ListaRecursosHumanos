@@ -1,15 +1,14 @@
-import {
-  Card,
-  CardHeader,
-  Heading,
-  CardBody,
-  Text,
-  CardFooter,
-  Button,
-} from "@chakra-ui/react";
+import {Card, CardHeader, Heading, CardBody, Text, CardFooter, Button} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-
+import { useDispatch } from 'react-redux';
+import { deleteEmployee } from "../features/recursosHumanosSlice";
 const Employee = ({ empl }) => {
+  const dispatch = useDispatch()
+
+  const handleDelete = (id)=>{
+    console.log(id);
+    dispatch(deleteEmployee(id))
+  }
   return (
     <>
       <Card>
@@ -28,7 +27,7 @@ const Employee = ({ empl }) => {
               <Button bg="aquamarine">View here</Button>
             </Link>
             
-             <Button bg="orangered">Delete</Button>
+             <Button bg="orangered" onClick={()=>handleDelete(empl.employee_id)}>Delete</Button>
           
           </CardFooter>
         
