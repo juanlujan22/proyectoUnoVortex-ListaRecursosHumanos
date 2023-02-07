@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import EmployeList from "./components/EmployeList";
-import EmployeDetail from "./components/EmployeDetail";
+import EmployeesListContainer from "./components/EmployeesListContainer";
+import EmployeeDetail from "./components/EmployeeDetail";
+import EmployeeForm from "./components/EmployeeForm";
 function App() {
   
   return (
@@ -9,8 +10,10 @@ function App() {
       <BrowserRouter>
         <NavBar />
         <Routes>
-           <Route path="/" element={<EmployeList />} />
-           <Route path="/empleado/:id" element={<EmployeDetail />} />
+           <Route path="/" element={<EmployeesListContainer />} />
+           <Route path="detail/:id" element={<EmployeeDetail />} />
+           <Route path="detail/:id/edit/:id" element={<EmployeeForm />} />
+           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
         

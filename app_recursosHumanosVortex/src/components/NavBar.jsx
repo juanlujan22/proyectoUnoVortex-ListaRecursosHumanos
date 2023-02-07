@@ -2,13 +2,13 @@ import { Text } from "@chakra-ui/react";
 import { NavLink } from "react-router-dom";
 const NavBar = () => {
   return (
-    <div>
+    <nav>
       <div>
         <NavLink to="/">
-          <Text fontSize='4xl' color='tomato' as="b"> List of employees </Text>
+          <Text fontSize='4xl' color='tomato' as="b"> Employees </Text>
         </NavLink>
       </div>
-    </div>
+    </nav>
   );
 };
 export default NavBar;
