@@ -37,9 +37,7 @@ const EmployeeDetail = () => {
             <Text> email: {email} </Text>
           </CardBody>
           <CardFooter justifyContent="center">
-            <Link to={`edit/${employee_id}`}>
-            <Button>Edit</Button>
-            </Link>
+            <Button>Edit</Button>        
           </CardFooter>
        </Card> 
     </div>

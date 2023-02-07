@@ -36,10 +36,13 @@ export const employesSlice = createSlice({
     name: 'EMPLOYEES',
     initialState,
     reducers: {
-        
+        addEmployee: (state, action)=>{
+            console.log(state, action);
+            return [...state, action.payload ]
+        }, 
     }
 })
 
-export const { } = employesSlice.actions
+export const { addEmployee } = employesSlice.actions
 
 export default employesSlice.reducer

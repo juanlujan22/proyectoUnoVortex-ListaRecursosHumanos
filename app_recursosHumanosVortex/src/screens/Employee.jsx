@@ -25,8 +25,11 @@ const Employee = ({ empl }) => {
           </CardBody>
           <CardFooter justifyContent="center">
             <Link to={`detail/${empl.employee_id}`}>
-              <Button>View here</Button>
+              <Button bg="aquamarine">View here</Button>
             </Link>
+            
+             <Button bg="orangered">Delete</Button>
+          
           </CardFooter>
         
       </Card>

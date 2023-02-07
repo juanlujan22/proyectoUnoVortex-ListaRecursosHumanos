@@ -12,7 +12,7 @@ function App() {
         <Routes>
            <Route path="/" element={<EmployeesListContainer />} />
            <Route path="detail/:id" element={<EmployeeDetail />} />
-           <Route path="detail/:id/edit/:id" element={<EmployeeForm />} />
+           <Route path="/form" element={<EmployeeForm />} />
            <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
