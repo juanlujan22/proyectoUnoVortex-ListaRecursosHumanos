@@ -35,9 +35,11 @@ const EmployeeDetail = () => {
             <Text> hire date:{hire_date}</Text>
             <Text> phone: {phone_number} </Text>
             <Text> email: {email} </Text>
-          </CardBody>
+          </CardBody> 
           <CardFooter justifyContent="center">
-            <Button>Edit</Button>        
+            <Link to={`/edit-employee/${employee_id}`}>
+              <Button>Edit</Button>        
+            </Link>
           </CardFooter>
        </Card> 
     </div>

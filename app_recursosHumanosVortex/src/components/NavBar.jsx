@@ -7,13 +7,13 @@ const NavBar = () => {
         <HStack spacing='24px' p={26} borderWidth='1px' bg="lavender" w="100vw" justifyContent="space-around" >
             <NavLink to="/">
               <Box>
-                <img src="public/vite.svg" style={{height: "30px" }} alt={"logo"} />
+                <img src="/vite.svg" style={{height: "30px" }} alt={"logo"} />
               </Box>
             </NavLink>
             <NavLink to="/">
               <Text fontSize='4xl' color='black' as="b"> Employees </Text>
             </NavLink>
-            <NavLink to={"/form"}>
+            <NavLink to={"/create-employee"}>
                 <Button bg="green" >Add Employee</Button>
             </NavLink>
           

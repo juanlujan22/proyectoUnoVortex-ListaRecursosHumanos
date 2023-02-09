@@ -1,16 +1,23 @@
-import { useSelector } from "react-redux";
+import { useSelector} from "react-redux";
+import { useEffect } from "react";
 import Employee from "../screens/Employee";
 import { SimpleGrid } from "@chakra-ui/react";
 
+
 const EmployeesListContainer = () => {
-  const employees = useSelector((state) => state.employes);
+
+  const employees=useSelector(state=> state.employes)
+  console.log(employees)
+  // const dispatch = useDispatch()
   
+
+
   return (
     <SimpleGrid
       spacing={6}
       templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
     >
-      {employees.map((empl) => {
+        {employees.map((empl) => {
         return <Employee key={empl.employee_id} empl={empl} />;
       })}
     </SimpleGrid>
