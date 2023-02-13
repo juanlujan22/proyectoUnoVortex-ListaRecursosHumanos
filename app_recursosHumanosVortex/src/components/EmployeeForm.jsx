@@ -20,8 +20,14 @@ const EmployeeForm = () => {
     phone_number: "",
     hire_date:"" ,
     salary:"",
-    commission_pct: ""
+    commission_pct: "",
+    hasError: false,
   })
+  // const [emailField, setEmailField] = useState({
+  //   value: "",
+  //   hasError: false,
+  // });
+
   const navigate = useNavigate()
   const params=useParams()
   
@@ -30,7 +36,7 @@ const EmployeeForm = () => {
 
   useEffect(()=>{
     if (params.id){
-      setEmployee(emplList.find(empl=>empl.employee_id === params.id))
+      setEmployee(emplList.find(empl=>empl.employee_id == params.id))
     }
   },[])
 
@@ -38,13 +44,14 @@ const EmployeeForm = () => {
     setEmployee({...employee, 
     [e.target.name] : e.target.value})
   }
-  
   const handleSubmit= e =>{
     e.preventDefault()
     if(params.id){
       dispatch(editEmploye(employee))
+      alert("Employee edited successfully!!")
     } else {
       dispatch(addEmployee(employee))
+      alert("Employee added successfully!!")
     }
     navigate("/")
   }
@@ -52,6 +59,12 @@ const EmployeeForm = () => {
     navigate("/")
   }
 
+  const emailRegExp = new RegExp(/[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/);
+
+  function handleBlur() {
+    const hasError = !emailRegExp.test(employee.email);
+    setEmployee((prevState) => ({ ...prevState, hasError:true }));
+  }
   return (
     <>
     <VStack  p={7} justifyContent="center">
@@ -83,12 +96,22 @@ const EmployeeForm = () => {
               />
               <FormLabel mt={10}>Email</FormLabel>
               <Input
+                onBlur={handleBlur}
                 placeholder='Email'
                 onChange={handleChange}
                 type="email"
                 value={employee.email}
                 name="email"
+                aria-errormessage="emailErrorID"
+                aria-invalid={employee.hasError}
               />
+               <p
+                id="msgID"
+                aria-live="assertive"
+                style={{ visibility: employee.hasError ? "visible" : "hidden" }}
+              >
+                This email is not valid
+               </p>
               <FormLabel mt={10}>Phone Number</FormLabel>
               <Input
                 placeholder='Phone Number'
@@ -101,7 +124,7 @@ const EmployeeForm = () => {
               <Input
                 placeholder='Hire Data'
                 onChange={handleChange}
-                type="date"
+                type="text"
                 value={employee.hire_date}
                 name="hire_date"
               />
@@ -124,7 +147,6 @@ const EmployeeForm = () => {
               <HStack mt={20}>
                 <Button borderRadius={15} h={40} w={70} bg="blueviolet" type='submit' >Agregar</Button>
                 <Button borderRadius={15} h={40} w={70} bg="yellow" onClick={handleCancel}> Salir</Button>
-                
               </HStack>
               <HStack mt={20}>
               </HStack>
