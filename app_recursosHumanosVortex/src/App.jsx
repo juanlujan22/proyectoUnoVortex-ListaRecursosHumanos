@@ -1,8 +1,8 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import EmployeesListContainer from "./components/EmployeesListContainer";
-import EmployeeDetail from "./components/EmployeeDetail";
-import EmployeeForm from "./components/EmployeeForm";
+import EmployeeDetail from "./screens/EmployeeDetail";
+import EmployeeForm from "./screens/EmployeeForm";
 function App() {
   
   return (
