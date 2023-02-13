@@ -23,10 +23,6 @@ const EmployeeForm = () => {
     commission_pct: "",
     hasError: false,
   })
-  // const [emailField, setEmailField] = useState({
-  //   value: "",
-  //   hasError: false,
-  // });
 
   const navigate = useNavigate()
   const params=useParams()
