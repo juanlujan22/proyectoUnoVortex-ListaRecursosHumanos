@@ -50,7 +50,6 @@ export const employesSlice = createSlice({
       }
     },
     editEmploye: (state, action) => {
-      console.log(action.payload);
       const {
         first_name,
         last_name,
@@ -63,7 +62,6 @@ export const employesSlice = createSlice({
       } = action.payload;
       console.log(employee_id);
       const findEmpl = state.find((empl) => empl.employee_id === employee_id);
-      console.log(findEmpl);
       if (findEmpl) {
         findEmpl.first_name = first_name;
         findEmpl.last_name = last_name;

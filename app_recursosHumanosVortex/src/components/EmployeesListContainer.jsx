@@ -1,26 +1,26 @@
 import { useSelector} from "react-redux";
-import { useEffect } from "react";
 import Employee from "../screens/Employee";
-import { SimpleGrid } from "@chakra-ui/react";
-
+import { SimpleGrid, VStack, Button } from "@chakra-ui/react";
+import { NavLink } from "react-router-dom";
 
 const EmployeesListContainer = () => {
-
   const employees=useSelector(state=> state.employes)
-  console.log(employees)
-  // const dispatch = useDispatch()
   
-
-
   return (
-    <SimpleGrid
-      spacing={6}
-      templateColumns="repeat(auto-fill, minmax(200px, 1fr))"
-    >
-        {employees.map((empl) => {
-        return <Employee key={empl.employee_id} empl={empl} />;
-      })}
-    </SimpleGrid>
+    <> 
+      <VStack mt={10}>
+        <NavLink to={"/create-employee"}>
+            <Button borderRadius={10} bg="blueviolet" w={100} p="20" m="20" >Add Employee</Button>
+        </NavLink>
+      </VStack>
+      <SimpleGrid 
+          columns={3} spacingX='40px' spacingY='20px' textAlign='center'
+          >
+            {employees.map((empl) => {
+              return <Employee key={empl.employee_id} empl={empl} />;
+            })}
+      </SimpleGrid>
+    </>
   );
 };
 export default EmployeesListContainer;

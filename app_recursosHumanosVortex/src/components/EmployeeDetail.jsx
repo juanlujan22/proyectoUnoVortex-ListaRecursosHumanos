@@ -1,7 +1,9 @@
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import {
+  VStack,
   Card,
   CardHeader,
   Heading,
@@ -13,35 +15,39 @@ import {
 
 const EmployeeDetail = () => {
   const {id}=useParams()
+  const navigate = useNavigate()
   const employe = useSelector(store=>store.employes)
   console.log(id)
   console.log(employe)
 
   const findEmpl = employe.find(empl=>empl.employee_id == id)
-  
+  const handlerEdit =()=>{
+    navigate(`/edit-employee/${employee_id}`)
+  }
   const {first_name, last_name, phone_number, email, hire_date, salary, commission_pct, employee_id  } = findEmpl
   return (
     <div>
-      <Card alignItems="center">
-        <CardHeader>
-          <Heading size="md">
-            Name: {first_name}, 
-            Last name: {last_name}
-          </Heading>
-        </CardHeader>
-          <CardBody>
-            <Text> salary: {salary}</Text>
-            <Text> commission: {commission_pct}</Text>
-            <Text> hire date:{hire_date}</Text>
-            <Text> phone: {phone_number} </Text>
-            <Text> email: {email} </Text>
-          </CardBody> 
-          <CardFooter justifyContent="center">
-            <Link to={`/edit-employee/${employee_id}`}>
-              <Button>Edit</Button>        
-            </Link>
-          </CardFooter>
-       </Card> 
+      <VStack mt="20">
+        <Card borderRadius={15} w="fit-content"  p="5px" boxShadow='xs' bgColor="lavender" alignItems="center" border="solid 3px blueviolet"  >
+          <CardHeader>
+            <Heading size="md">
+              Name: {first_name}, 
+              <br />
+              Last name: {last_name}
+            </Heading>
+          </CardHeader>
+            <CardBody>
+              <Text> salary: {salary}</Text>
+              <Text> commission: {commission_pct}</Text>
+              <Text> hire date:{hire_date}</Text>
+              <Text> phone: {phone_number} </Text>
+              <Text> email: {email} </Text>
+            </CardBody> 
+            <CardFooter justifyContent="center">
+                <Button  bg="blueviolet" borderRadius={15} h={40} w={65} onClick={handlerEdit} > Edit</Button>        
+            </CardFooter>
+        </Card> 
+      </VStack>
     </div>
   )
 }
