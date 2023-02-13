@@ -4,7 +4,6 @@ import { deleteEmployee } from "../features/recursosHumanosSlice";
 import { useSelector } from "react-redux";
 import { Box, Card, CardHeader, Heading, CardBody, Text, CardFooter, Button} from "@chakra-ui/react";
 const Employee = ({ empl }) => {
-  const employees=useSelector(state=> state.employes)
   const dispatch = useDispatch()
   const navigate= useNavigate()
 
@@ -15,20 +14,9 @@ const Employee = ({ empl }) => {
     navigate(`/detail/${empl.employee_id}`)
   }
 
-  const renderMessage=()=>{
-    return (
-      <>
-        <h1>
-          No Hay RR.HH. Disponibles
-        </h1>
-      </>
-    )
-  }
+
   return (
     <>
-     {employees.length === "" || employees.length === 0 ?
-      {renderMessage}
-      :
       <Box boxShadow='dark-lg' p='6' rounded='md'>
         <Card  p={15} m={15} borderRadius={20} boxShadow='15px 16px lightgray' bgColor="white" alignItems="center" border="solid 3px blueviolet">
           <CardHeader>
@@ -48,7 +36,6 @@ const Employee = ({ empl }) => {
             </CardFooter>
         </Card>
       </Box>
-    }
     </>
   );
 };
