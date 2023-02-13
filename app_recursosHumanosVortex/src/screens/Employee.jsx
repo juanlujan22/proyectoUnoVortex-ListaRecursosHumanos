@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from 'react-redux';
 import { deleteEmployee } from "../features/recursosHumanosSlice";
-import { useSelector } from "react-redux";
 import { Box, Card, CardHeader, Heading, CardBody, Text, CardFooter, Button} from "@chakra-ui/react";
 const Employee = ({ empl }) => {
   const dispatch = useDispatch()
